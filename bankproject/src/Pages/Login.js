@@ -1,5 +1,6 @@
 import React from "react";
 import "../Styling/user.css";
+import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <div className="container">
@@ -11,7 +12,7 @@ const Login = () => {
 
       <div className="inputModal">
         <h1>Log in to your account</h1>
-        <p>If you do not have an account, register here</p>
+        <p>If you do not have an account, register here </p>
 
         <label>UserName</label>
         <input placeholder="UserName"></input>
