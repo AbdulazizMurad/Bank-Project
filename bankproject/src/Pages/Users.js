@@ -1,13 +1,13 @@
 import React from "react";
 import NavBar from "../Components/NavBar";
 
-const Home = () => {
+const Users = () => {
   return (
     <div>
       <NavBar />
-      <p>Home</p>
+      <p>users</p>
     </div>
   );
 };
 
-export default Home;
+export default Users;
