@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Styling/user.css";
-import { Link } from "react-router-dom";
+import { login } from "../API/auth";
+import { useMutation } from "@tanstack/react-query";
+
 const Login = () => {
+  const [userInfo, setUserInfo] = useState({});
+
+  const handleChange = (e) => {
+    setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Add login logic here
+    handleLogin();
+  };
+  const { mutate: handleLogin } = useMutation({
+    mutationKey: ["Login"],
+    mutationFn: () => login(userInfo),
+    // onSuccess: () => {
+    //   setUser(true);
+    // },
+  });
   return (
     <div className="container">
       <img
@@ -15,9 +35,20 @@ const Login = () => {
         <p>If you do not have an account, register here </p>
 
         <label>UserName</label>
-        <input placeholder="UserName"></input>
+        <input
+          placeholder="UserName"
+          name="username"
+          onChange={handleChange}
+          className="text-customBlue"
+        ></input>
         <label>Password</label>
-        <input placeholder="Password"></input>
+        <input
+          placeholder="Password"
+          name="password"
+          onChange={handleChange}
+          className="text-customBlue"
+        ></input>
+        <button onClick={handleFormSubmit}>Login</button>
       </div>
     </div>
   );

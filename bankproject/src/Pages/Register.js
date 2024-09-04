@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import { register } from "../API/auth";
+import { useMutation } from "@tanstack/react-query";
 
 const Register = () => {
+  const [userInfo, setUserInfo] = useState({});
+  const handleChange = (e) => {
+    if (e.target.name === "image") {
+      setUserInfo({ ...userInfo, [e.target.name]: e.target.files[0] });
+    } else {
+      setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+    }
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Add register logic here
+    handleRegister();
+  };
+  const { mutate: handleRegister } = useMutation({
+    mutationKey: ["register"],
+    mutationFn: () => register(userInfo),
+  });
   return (
     <div className="container">
       <img
@@ -13,9 +33,19 @@ const Register = () => {
         <h1>Register your account</h1>
         <p>Already have an account? Login here</p>
         <label>UserName</label>
-        <input placeholder="UserName"></input>
+        <input
+          name="username"
+          placeholder="UserName"
+          onChange={handleChange}
+          className="text-customBlue"
+        ></input>
         <label>Password</label>
-        <input placeholder="Password"></input>
+        <input
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+          className="text-customBlue"
+        ></input>
         <div className="mb-6">
           <label
             htmlFor="image"
@@ -32,6 +62,12 @@ const Register = () => {
             required
           />
         </div>
+        <button
+          onClick={handleFormSubmit}
+          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+        >
+          Submit
+        </button>
       </div>
     </div>
   );

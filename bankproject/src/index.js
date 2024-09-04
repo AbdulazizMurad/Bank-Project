@@ -3,14 +3,19 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import Home from "./Pages/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+
+//imports---
+import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Profile from "./Pages/Profile";
 import Transactions from "./Pages/Transactions";
 import Users from "./Pages/Users";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const queryClient = new QueryClient();
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
   {
@@ -38,9 +43,12 @@ const router = createBrowserRouter([
     element: <Users />,
   },
 ]);
+
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
