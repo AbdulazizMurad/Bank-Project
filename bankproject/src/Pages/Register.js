@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { register } from "../API/auth";
 import { useMutation } from "@tanstack/react-query";
+import { Navigate, NavLink } from "react-router-dom";
+import UserContext from "../API/context/UserContext";
 
 const Register = () => {
   const [userInfo, setUserInfo] = useState({});
+  const [user, setUser] = useContext(UserContext);
   const handleChange = (e) => {
     if (e.target.name === "image") {
       setUserInfo({ ...userInfo, [e.target.name]: e.target.files[0] });
@@ -20,7 +23,14 @@ const Register = () => {
   const { mutate: handleRegister } = useMutation({
     mutationKey: ["register"],
     mutationFn: () => register(userInfo),
+    onSuccess: () => {
+      setUser(true);
+    },
   });
+
+  if (user) {
+    return <Navigate to={"/Home"} />;
+  }
   return (
     <div className="container">
       <img
@@ -31,7 +41,9 @@ const Register = () => {
 
       <div className="inputModal">
         <h1>Register your account</h1>
-        <p>Already have an account? Login here</p>
+        <p>
+          Already have an account, <NavLink to="/">Login here</NavLink>.
+        </p>
         <label>UserName</label>
         <input
           name="username"

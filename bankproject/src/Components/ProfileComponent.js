@@ -1,6 +1,13 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { getMyProfile } from "../API/auth";
 
 const ProfileComponent = () => {
+  const { data } = useQuery({
+    querykey: ["getmyprofile"],
+    queryfn: () => getMyProfile(),
+  });
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 rounded-r text-center">
       <div className="bg-customBlue flex-col w-fit border-2 p-4 rounded-lg">

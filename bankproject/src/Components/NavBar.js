@@ -9,19 +9,19 @@ const NavBar = () => {
           <div className="block">
             <div className="ml-10 flex items-baseline space-x-4">
               <NavLink
-                to="/Home"
+                to="/"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
               >
                 Home
               </NavLink>
               <NavLink
-                to="/Transactions"
+                to="Transactions"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
               >
                 Transactions
               </NavLink>
               <NavLink
-                to="/Users"
+                to="Users"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
               >
                 Users

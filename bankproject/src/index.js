@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Children } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -17,31 +17,38 @@ import Users from "./Pages/Users";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
-  { path: "/", element: <App /> },
   {
-    path: "/Home",
-    element: <Home />,
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Login />,
+      },
+      {
+        path: "/Register",
+        element: <Register />,
+      },
+      {
+        path: "/Home",
+        element: <Home />,
+      },
+      {
+        path: "/Profile",
+        element: <Profile />,
+      },
+      {
+        path: "/Transactions",
+        element: <Transactions />,
+      },
+      {
+        path: "Users",
+        element: <Users />,
+      },
+    ],
   },
-  {
-    path: "/Login",
-    element: <Login />,
-  },
-  {
-    path: "/Register",
-    element: <Register />,
-  },
-  {
-    path: "/Profile",
-    element: <Profile />,
-  },
-  {
-    path: "/Transactions",
-    element: <Transactions />,
-  },
-  {
-    path: "/Users",
-    element: <Users />,
-  },
+  ,
+  ,
 ]);
 
 root.render(

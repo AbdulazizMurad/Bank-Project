@@ -2,30 +2,42 @@ import React, { useContext, useState } from "react";
 import "../Styling/user.css";
 import { login } from "../API/auth";
 import { useMutation } from "@tanstack/react-query";
+import { Navigate, NavLink } from "react-router-dom";
 import UserContext from "../API/context/UserContext";
 
 const Login = () => {
   const [userInfo, setUserInfo] = useState({});
   const [user, setUser] = useContext(UserContext);
+
   const handleChange = (e) => {
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    // Add login logic here
-    handleLogin();
-  };
+  console.log("user", user);
+
   const { mutate: handleLogin } = useMutation({
     mutationKey: ["Login"],
     mutationFn: () => login(userInfo),
     onSuccess: () => {
       setUser(true);
     },
+    onError: (e) => {
+      console.log(e);
+    },
   });
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Add login logic here
+    handleLogin();
+  };
+
+  if (user) {
+    return <Navigate to={"/Home"} />;
+  }
+
   return (
     <div className="container">
-      <h1 className="text-white">{`${user}`}</h1>
       <img
         src="https://static.vecteezy.com/system/resources/previews/021/944/628/original/bank-logo-or-icon-design-on-white-background-illustration-vector.jpg"
         alt="Bank Logo"
@@ -34,7 +46,10 @@ const Login = () => {
 
       <div className="inputModal">
         <h1>Log in to your account</h1>
-        <p>If you do not have an account, register here </p>
+        <p>
+          If you do not have an account,
+          <NavLink to="/Register">register here</NavLink>.
+        </p>
 
         <label>UserName</label>
         <input

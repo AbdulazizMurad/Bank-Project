@@ -27,19 +27,9 @@ const login = async (userInfo) => {
     console.log(error);
   }
 };
-const logout = () => {
-  localStorage.removeItem("token");
+const getMyProfile = async () => {
+  const { data } = await instance.get("/mini-project/api/auth/me");
+  return data;
 };
-export { register, login, logout };
 
-//   const register = async (userInfo) => {
-//     try {
-//       const { data } = await instance.post(
-//         "/mini-project/api/auth/register",
-//         userInfo
-//       );
-//       // storeToken(data.token); // <--- This
-//       return data;
-//     } catch (error) {
-//       console.log(error);
-//     }
+export { register, login, getMyProfile };
