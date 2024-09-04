@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../Styling/user.css";
 import { login } from "../API/auth";
 import { useMutation } from "@tanstack/react-query";
+import UserContext from "../API/context/UserContext";
 
 const Login = () => {
   const [userInfo, setUserInfo] = useState({});
-
+  const [user, setUser] = useContext(UserContext);
   const handleChange = (e) => {
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -18,12 +19,13 @@ const Login = () => {
   const { mutate: handleLogin } = useMutation({
     mutationKey: ["Login"],
     mutationFn: () => login(userInfo),
-    // onSuccess: () => {
-    //   setUser(true);
-    // },
+    onSuccess: () => {
+      setUser(true);
+    },
   });
   return (
     <div className="container">
+      <h1 className="text-white">{`${user}`}</h1>
       <img
         src="https://static.vecteezy.com/system/resources/previews/021/944/628/original/bank-logo-or-icon-design-on-white-background-illustration-vector.jpg"
         alt="Bank Logo"
