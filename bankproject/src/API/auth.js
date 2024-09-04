@@ -27,7 +27,10 @@ const login = async (userInfo) => {
     console.log(error);
   }
 };
-export { register, login };
+const logout = () => {
+  localStorage.removeItem("token");
+};
+export { register, login, logout };
 
 //   const register = async (userInfo) => {
 //     try {

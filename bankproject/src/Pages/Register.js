@@ -62,7 +62,7 @@ const Register = () => {
             required
           />
         </div>
-        <button
+        <button // submit button for register
           onClick={handleFormSubmit}
           className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
         >
