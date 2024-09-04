@@ -27,16 +27,5 @@ const login = async (userInfo) => {
     console.log(error);
   }
 };
-export { register, login };
 
-//   const register = async (userInfo) => {
-//     try {
-//       const { data } = await instance.post(
-//         "/mini-project/api/auth/register",
-//         userInfo
-//       );
-//       // storeToken(data.token); // <--- This
-//       return data;
-//     } catch (error) {
-//       console.log(error);
-//     }
+export { register, login };

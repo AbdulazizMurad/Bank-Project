@@ -1,11 +1,13 @@
 // import logo from "./logo.svg";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserContext from "./API/context/UserContext";
 import "./App.css";
 // import Login from "./Pages/Login";
 // import Home from "./Pages/Home";
-import Register from "./Pages/Register";
+
 import { checkToken } from "./API/storage";
+import { Navigate, Outlet } from "react-router-dom";
+import NavBar from "./Components/NavBar";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -19,7 +21,7 @@ function App() {
     <UserContext.Provider value={[user, setUser]}>
       <div className="App font-mono ">
         <h1 className="color">the user state is {`${user}`}</h1>
-        <Register />
+        <Outlet />
       </div>
     </UserContext.Provider>
   );
