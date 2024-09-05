@@ -28,8 +28,15 @@ const login = async (userInfo) => {
   }
 };
 const getMyProfile = async () => {
-  const { data } = await instance.get("/mini-project/api/auth/me");
-  return data;
+  try {
+    const { data } = await instance.get("/mini-project/api/auth/me");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const logout = () => {
+  localStorage.removeItem("token");
 };
 
-export { register, login, getMyProfile };
+export { register, login, getMyProfile, logout };

@@ -3,11 +3,12 @@ import React from "react";
 import { getMyProfile } from "../API/auth";
 
 const ProfileComponent = () => {
-  const { data } = useQuery({
-    querykey: ["getmyprofile"],
-    queryfn: () => getMyProfile(),
+  const { data: profile } = useQuery({
+    queryKey: ["getmyprofile"],
+    queryFn: () => getMyProfile(),
   });
-
+  console.log(profile);
+  //{"username":"AddedNew","balance":0}
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 rounded-r text-center">
       <div className="bg-customBlue flex-col w-fit border-2 p-4 rounded-lg">
@@ -20,7 +21,7 @@ const ProfileComponent = () => {
         </div>
 
         <div>
-          <h4>PROFILE NAME</h4>
+          <h4>{}</h4>
           <p>Balance</p>
           <label
             htmlFor="image"
@@ -38,6 +39,7 @@ const ProfileComponent = () => {
           />
         </div>
       </div>
+      ;
     </div>
   );
 };

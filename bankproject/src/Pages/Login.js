@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "../Styling/user.css";
-import { login } from "../API/auth";
+import { login, logout } from "../API/auth";
 import { useMutation } from "@tanstack/react-query";
 import { Navigate, NavLink } from "react-router-dom";
 import UserContext from "../API/context/UserContext";
