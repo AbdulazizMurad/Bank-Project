@@ -49,14 +49,14 @@ const Register = () => {
           name="username"
           placeholder="UserName"
           onChange={handleChange}
-          className="text-customBlue"
+          className="text-[#003380]"
         ></input>
         <label>Password</label>
         <input
           name="password"
           placeholder="Password"
           onChange={handleChange}
-          className="text-customBlue"
+          className="text-[#003380]"
         ></input>
         <div className="mb-6">
           <label
@@ -69,7 +69,7 @@ const Register = () => {
             type="file"
             id="image"
             name="image"
-            // onChange={handleChange}
+            onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
             required
           />
