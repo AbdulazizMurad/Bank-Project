@@ -21,8 +21,13 @@ const ProfileComponent = () => {
         </div>
 
         <div>
-          <h4>{}</h4>
-          <p>Balance</p>
+          <ul>
+            <ul>
+              <li>Username: {profile?.username}</li>
+              <li>Balance: {profile?.balance}$</li>
+            </ul>
+          </ul>
+
           <label
             htmlFor="image"
             className="block text-white text-sm font-medium mb-2"
@@ -39,7 +44,6 @@ const ProfileComponent = () => {
           />
         </div>
       </div>
-      ;
     </div>
   );
 };
