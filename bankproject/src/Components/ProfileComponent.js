@@ -10,7 +10,7 @@ const ProfileComponent = () => {
   console.log(profile);
   //{"username":"AddedNew","balance":0}
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 rounded-r text-center">
+    <div className="flex items-center justify-center min-h-screen bg-gray-800 rounded-r text-center">
       <div className="bg-customBlue flex-col w-fit border-2 p-4 rounded-lg">
         <div className="flex items-center justify-center w-40 h-40 mb-4 mx-auto">
           <img
