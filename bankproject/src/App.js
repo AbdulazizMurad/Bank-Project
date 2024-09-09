@@ -17,7 +17,6 @@ function App() {
   return (
     <UserContext.Provider value={[user, setUser]}>
       <div className="App font-mono ">
-        <h1 className="color">the user state is {`${user}`}</h1>
         <Outlet />
       </div>
     </UserContext.Provider>

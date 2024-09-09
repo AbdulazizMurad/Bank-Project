@@ -8,29 +8,28 @@ const ProfileComponent = () => {
     queryFn: () => getMyProfile(),
   });
   console.log(profile);
-  //{"username":"AddedNew","balance":0}
+  const baseURL = "https://react-bank-project.eapi.joincoded.com/";
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-800 rounded-r text-center">
-      <div className="bg-customBlue flex-col w-fit border-2 p-4 rounded-lg">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white text-center">
+      <div className="bg-[#003380] w-fit border-2 p-4 rounded-lg mb-8 text-white">
         <div className="flex items-center justify-center w-40 h-40 mb-4 mx-auto">
           <img
-            src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_640.png"
-            alt="Profile-img"
+            src={baseURL + profile?.image}
+            alt="Profile image"
             className="w-24 h-24 object-cover rounded-full"
           />
         </div>
 
         <div>
-          <ul>
-            <ul>
-              <li>Username: {profile?.username}</li>
-              <li>Balance: {profile?.balance}$</li>
-            </ul>
+          <ul className="text-white text-lg font-semibold">
+            <li>Username: {profile?.username}</li>
+            <li>Balance: {profile?.balance}$</li>
           </ul>
 
           <label
             htmlFor="image"
-            className="block text-white text-sm font-medium mb-2"
+            className="block text-white text-lg font-semibold mb-2 mt-4"
           >
             Upload a Profile Image
           </label>
@@ -39,7 +38,7 @@ const ProfileComponent = () => {
             id="image"
             name="image"
             // onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+            className="w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white text-lg font-semibold "
             required
           />
         </div>

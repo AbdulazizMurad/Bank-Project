@@ -12,7 +12,10 @@ const Users = () => {
   const baseURL = "https://react-bank-project.eapi.joincoded.com/";
   return (
     <div>
-      <NavBar />
+      <div className="mb-12">
+        <NavBar />
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 7 p-8 justify-center gap-5">
         {users?.map((user) => (
           <div

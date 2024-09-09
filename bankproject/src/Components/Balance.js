@@ -8,13 +8,11 @@ const Balance = () => {
     queryFn: () => getMyProfile(),
   });
   console.log(profile);
+
   return (
-    <div className="  ">
-      <ul className="bg-slate-600 h-200px w-100px align-center justify-center">
-        <ul />
-        <h1>Your Available Balance is :</h1>
-        <li>Balance: {profile?.balance}$</li>
-      </ul>
+    <div className="bg-[#003380] text-white p-4 rounded-lg border border-gray-600 w-64 text-center w-fit">
+      <h1 className="text-lg font-semibold mb-2">Your Available Balance is:</h1>
+      <p className="text-xl font-bold">Balance: {profile?.balance}$</p>
     </div>
   );
 };
