@@ -11,6 +11,16 @@ const transfere = async (username, amount) => {
   );
   return response.data;
 };
+const updateProfile = async (image) => {
+  const formData = new FormData();
+  formData.append("image", image);
+  console.log(formData);
+  const response = await instance.put(
+    "/mini-project/api/auth/profile",
+    formData
+  );
+  return response.data;
+};
 const deposit = async (amount) => {
   const response = await instance.put(
     "/mini-project/api/transactions/deposit",
@@ -25,4 +35,5 @@ const withdraw = async (amount) => {
   );
   return response.data;
 };
-export { getAllUsers, transfere, deposit, withdraw };
+
+export { getAllUsers, transfere, deposit, withdraw, updateProfile };

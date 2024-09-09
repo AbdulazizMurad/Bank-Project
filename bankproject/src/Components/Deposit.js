@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { deposit } from "../API/features";
-import { QueryClient, useMutation } from "@tanstack/react-query";
+import {
+  QueryClient,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
 
 const Deposit = () => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
 
   const handleChange = (e) => {
     setAmount(e.target.value);
@@ -13,12 +17,14 @@ const Deposit = () => {
     e.preventDefault();
     handleDeposit();
   };
+  const queryClient = useQueryClient();
 
   const { mutate: handleDeposit } = useMutation({
     mutationKey: ["deposit"],
     mutationFn: () => deposit(amount),
     onSuccess: () => {
-      QueryClient.invalidateQueries(["getmyprofile"]);
+      queryClient.invalidateQueries({ queryKey: ["getmyprofile"] });
+      setAmount("");
     },
   });
   return (
@@ -29,9 +35,11 @@ const Deposit = () => {
           placeholder="Deposit amount"
           className="w-full px-3 py-2 mb-4 rounded-md text-black"
           onChange={handleChange}
+          required
+          value={amount}
         />
         <button
-          className="bg-blue-500 w-full py-2 rounded-md hover:bg-blue-600 p-2"
+          className="bg-blue-500 w-full py-2 rounded-md font-semibold  hover:bg-blue-600 p-2"
           onClick={handleFormSubmit}
         >
           Deposit

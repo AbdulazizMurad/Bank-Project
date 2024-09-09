@@ -71,6 +71,7 @@ const Login = () => {
               name="username"
               placeholder="Username"
               onChange={handleChange}
+              required
               className="block w-full px-3 py-2 text-[#003380] border border-gray-700 rounded-md"
             />
           </div>
@@ -87,6 +88,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
               onChange={handleChange}
+              required //required input to redirect and allows login.
               className="block w-full px-3 py-2 text-[#003380] border border-gray-700 rounded-md"
             />
           </div>
