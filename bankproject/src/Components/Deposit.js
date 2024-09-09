@@ -39,7 +39,7 @@ const Deposit = () => {
           value={amount}
         />
         <button
-          className="bg-blue-500 w-full py-2 rounded-md font-semibold  hover:bg-blue-600 p-2"
+          className="bg-blue-500 w-full py-2 rounded-md font-semibold  hover:bg-blue-600 p-2 m-2"
           onClick={handleFormSubmit}
         >
           Deposit

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { getAllUsers, transfere } from "../API/features";
 import NavBar from "../Components/NavBar";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const Users = () => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
   const [username, setUsername] = useState("");
   const { data: users } = useQuery({
     queryKey: ["users"],
@@ -17,15 +17,20 @@ const Users = () => {
   const { mutate: handleTransfere } = useMutation({
     mutationKey: ["transfere"],
     mutationFn: () => transfere(username, amount),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["users"] });
+      setAmount("");
+    },
   });
   const handleClick = (e) => {
     e.preventDefault();
+    document.getElementById("transfereForm").reset(); //to rerender the transfere amount after transfering.
     handleTransfere();
   };
-
+  const queryClient = useQueryClient();
   const baseURL = "https://react-bank-project.eapi.joincoded.com/";
   return (
-    <div>
+    <form id="transfereForm">
       <div className="mb-12">
         <NavBar />
       </div>
@@ -52,6 +57,7 @@ const Users = () => {
                 placeholder="Transfer amount"
                 className="border-2 border-[#003380] rounded-md p-1 m-2"
                 onChange={handleChange}
+                value={user.amount}
               />
               <button
                 className="bg-[#003380] w-full py-2 rounded-md hover:bg-blue-600 m-2 text-white  font-semibold  p-2"
@@ -66,7 +72,7 @@ const Users = () => {
           </div>
         ))}
       </div>
-    </div>
+    </form>
   );
 };
 

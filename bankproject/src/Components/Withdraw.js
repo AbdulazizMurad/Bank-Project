@@ -39,7 +39,7 @@ const Withdraw = () => {
           value={amount}
         />
         <button
-          className="bg-red-500 w-full py-2 rounded-md font-semibold  hover:bg-red-600 p-2"
+          className="bg-red-500 w-full py-2 rounded-md font-semibold  hover:bg-red-600 p-2 m-2"
           onClick={handleFormSubmit}
         >
           Withdraw

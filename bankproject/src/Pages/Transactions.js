@@ -9,6 +9,7 @@ const Transactions = () => {
   return (
     <div>
       <NavBar />
+
       <TransactionsComponent />
     </div>
   );

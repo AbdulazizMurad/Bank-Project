@@ -11,8 +11,10 @@ const ProfileComponent = () => {
   });
   console.log(profile);
   const queryClient = useQueryClient();
+
   const handleUpdate = (e) => {
     e.preventDefault();
+    document.getElementById("profileForm").reset();
     updateImage();
   };
   const handleChange = (e) => {
@@ -29,7 +31,7 @@ const ProfileComponent = () => {
   const baseURL = "https://react-bank-project.eapi.joincoded.com/";
 
   return (
-    <form>
+    <form id="profileForm" onSubmit={handleUpdate}>
       <div className="flex flex-col items-center justify-center min-h-screen bg-white text-center">
         <div className="bg-[#003380] w-fit border-2 p-4 rounded-lg mb-8 text-white">
           <div className="flex items-center justify-center w-40 h-40 mb-4 mx-auto">
@@ -60,7 +62,12 @@ const ProfileComponent = () => {
               className="w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white text-lg font-semibold "
               required
             />
-            <button onClick={handleUpdate}>Update</button>
+            <button
+              type="submit"
+              className="bg-blue-500 m-2 text-white py-2 px-4 rounded-md w-full hover:bg-blue-600 transition duration-300"
+            >
+              Update
+            </button>
           </div>
         </div>
       </div>

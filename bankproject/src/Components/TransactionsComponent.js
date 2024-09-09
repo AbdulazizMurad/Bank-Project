@@ -48,29 +48,29 @@ const TransactionsComponent = () => {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl">
-        <h1 className="text-2xl font-semibold mb-6 text-gray-800">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 mt-7 ">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl mt-7">
+        <h1 className="text-2xl  mb-6 text-white bg-[#003380]  ">
           Transactions
         </h1>
 
         {/* Date Range Search */}
         <div className="flex space-x-4 mb-4">
           <div className="flex flex-col">
-            <label className="text-gray-700 mb-1">From Date</label>
+            <label className="text-[#003380] mb-1 ">From Date</label>
             <input
               type="date"
-              className="border form-control rounded px-4 py-2 text-gray-700"
+              className="border-2 border-[#003380] form-control rounded px-4 py-2 text-[#003380]"
               value={startDate}
               onChange={handleStartDateChange}
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="text-gray-700 mb-1">To Date</label>
+            <label className="text-[#003380] mb-1">To Date</label>
             <input
               type="date"
-              className="border form-control rounded px-4 py-2 text-gray-700"
+              className="border-2 border-[#003380] form-control rounded px-4 py-2 text-[#003380]"
               value={endDate}
               onChange={handleEndDateChange}
             />
@@ -81,7 +81,7 @@ const TransactionsComponent = () => {
         <div className="mb-4">
           <input
             type="number"
-            className="border form-control rounded w-full px-4 py-2 text-gray-700"
+            className="border-2 border-[#003380] form-control rounded w-full px-4 py-2 text-[#003380]"
             value={searchAmount}
             onChange={handleAmountChange}
             placeholder="Search by Amount"
@@ -91,7 +91,7 @@ const TransactionsComponent = () => {
         <div className="mb-4">
           <button
             onClick={refetch}
-            className="bg-blue-500 text-white py-2 px-4 rounded-md w-full hover:bg-blue-600 transition duration-300"
+            className="bg-[#003380] text-white py-2 px-4 rounded-md w-full hover:bg-blue-500 transition duration-300"
           >
             Search
           </button>
@@ -101,40 +101,40 @@ const TransactionsComponent = () => {
         <div className="flex flex-wrap gap-2 mb-6">
           <button
             onClick={() => setFilterType("all")}
-            className={`py-2 px-4 rounded-md ${
+            className={` hover:bg-blue-500 py-2 px-4 rounded-md ${
               filterType === "all"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200 text-gray-700"
+                ? "bg-[#003380] text-white"
+                : "bg-gray-200 text-[#003380]"
             }`}
           >
             All
           </button>
           <button
             onClick={() => setFilterType("deposit")}
-            className={`py-2 px-4 rounded-md ${
+            className={` hover:bg-blue-500 py-2 px-4 rounded-md ${
               filterType === "deposit"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200 text-gray-700"
+                ? "bg-[#003380] text-white"
+                : "bg-gray-200 text-[#003380]"
             }`}
           >
             Deposit
           </button>
           <button
             onClick={() => setFilterType("withdraw")}
-            className={`py-2 px-4 rounded-md ${
+            className={` hover:bg-blue-500 py-2 px-4 rounded-md ${
               filterType === "withdraw"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200 text-gray-700"
+                ? "bg-[#003380] text-white"
+                : "bg-gray-200 text-[#003380]"
             }`}
           >
             Withdraw
           </button>
           <button
             onClick={() => setFilterType("transfer")}
-            className={`py-2 px-4 rounded-md ${
+            className={` hover:bg-blue-500 py-2 px-4 rounded-md ${
               filterType === "transfer"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200 text-gray-700"
+                ? "bg-[#003380] text-white"
+                : "bg-gray-200 text-[#003380]"
             }`}
           >
             Transfer
@@ -157,7 +157,6 @@ const TransactionsComponent = () => {
                 <p className="text-lg font-semibold">
                   Amount:{" "}
                   <span
-                    // here the coloring factor for withdraw and deposits (search only count for integers no {-,+} in the search bar)
                     className={`${
                       transaction.type === "withdraw"
                         ? "text-red-600"
